@@ -35,6 +35,7 @@ end
 def check_arguments(arguments)
     if arguments.size < 3
         puts "wrong number of arguments"
+        return false
     end
     arguments.each do |arg|
         if !arg.scan(/\d/).any?
@@ -42,6 +43,7 @@ def check_arguments(arguments)
             return false
         end
     end
+    return true
 end
 
 check_arguments(ARGV) ? give_values(ARGV) : exit(1)
