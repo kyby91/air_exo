@@ -26,7 +26,7 @@ def puts_splited_string(string_à_couper, string_séparateur)
 end
 
 def check_number_of_arguments(arguments)
-    if arguments.size < 1 or arguments.size > 1
+    if arguments.size != 1
         puts "Wrong number of arguments"
         return false
     end

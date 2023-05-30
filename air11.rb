@@ -6,7 +6,7 @@ def read_file(name)
 end
 
 def check_argument(argument)
-    if argument.size < 1 or argument.size > 1
+    if argument.size != 1
         puts "Wrong number of argument"
         return false
     end
