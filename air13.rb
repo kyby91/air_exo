@@ -1,24 +1,20 @@
 #le roi des tris
 
-arr = [4,2,1,5,3]
-
+arr = *(1..10)
 def my_quick_sort(array)
-    if array.empty?
-    else
-        pivot = array[array.size-1]
-        array.delete(pivot)
-        array_inf, array_sup, new_array = [], [], []
+    return array if array.size <= 1
 
-        array.each do |i|
-            if i < pivot
-                array_inf.push(i)
-            else
-                array_sup.push(i)
-            end
-        end
-        new_array.push(my_quick_sort(array_inf), pivot, my_quick_sort(array_sup))
-    end
-    puts new_array
+    pivot = array.sample
+    new_array = []
+    left, right = array.partition {|num| num < pivot}
+
+    p "L: #{left} P:#{pivot} R: #{right}"
+
+    my_quick_sort(left)
+    my_quick_sort(right)
+    new_array.push(left, right)
+
+    p new_array.flatten
 end
 
-my_quick_sort(arr)
+my_quick_sort(arr.shuffle)
