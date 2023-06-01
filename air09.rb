@@ -2,14 +2,21 @@
 
 def sorted_fusion(array1, array2)
     new_array = []
-    while !array1.empty? && !array2.empty? do
-        if array1[0] < array2[0]
-            new_array.push(array1.shift)
+    loop do
+        if array1.empty?                                    #Si nan la dernière plus grande valeur ne sort pas
+            new_array.push(array2)
+            break
+        elsif array2.empty?                                 #Si nan la dernièere plus grande valeur ne sort pas
+            new_array.push(array1)
+            break
         else
-            new_array.push(array2.shift)
+            if array1[0] < array2[0]
+                new_array.push(array1.shift)
+            elsif array1[0] > array2[0]
+                new_array.push(array2.shift)
+            end
         end
     end
-    # puts new_array.concat(array1).concat(array2)
     puts new_array
 end
 
@@ -25,7 +32,7 @@ def check_arguments(arguments)
     arguments.delete("fusion")
     arguments.each do |argument|
         if !argument.scan(/\d/).any?
-            puts "Wrong argument"
+            puts "#{argument} is a wrong argument"
             return false
         end
     end
@@ -39,17 +46,4 @@ def edit_arguments(values)
     sorted_fusion(arr1, arr2)
 end
 
-edit_arguments(ARGV)
-
-
-# i = 0
-# j = 0
-# while i < array1.length and j < array2.length
-#     if array1[i] < array2[j]
-#         new_array << array1[i]
-#         i += 1
-#     else 
-#         new_array << array2[j]
-#         j += 1
-#     end
-# end
+check_arguments(ARGV.clone) ? edit_arguments(ARGV) : exit(1)    #Obliger d'utiliser un clone
