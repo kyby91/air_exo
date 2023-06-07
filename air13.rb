@@ -1,20 +1,27 @@
 #le roi des tris
 
-arr = *(1..10)
 def my_quick_sort(array)
-    return array if array.size <= 1
-
-    pivot = array.sample
-    new_array = []
-    left, right = array.partition {|num| num < pivot}
-
-    p "L: #{left} P:#{pivot} R: #{right}"
-
-    my_quick_sort(left)
-    my_quick_sort(right)
-    new_array.push(left, right)
-
-    p new_array.flatten
+    if array.size > 1
+        pivot = array.pop
+        left, right = array.partition {|num| num < pivot}
+        p "L: #{left} P:#{pivot} R: #{right}"
+        array = my_quick_sort(left) + [pivot] + my_quick_sort(right)
+    end
+    p array
 end
 
-my_quick_sort(arr.shuffle)
+def check_arguments(arguments)
+    if arguments.size < 1
+        puts "Wrong number of arguments"
+        return false
+    end
+    arguments.each do |argument|
+        if !argument.scan(/\d/).any?
+            puts "#{argument} is a wrong argument"
+            return false
+        end
+    end
+    return true 
+end
+
+check_arguments(ARGV) ? my_quick_sort(ARGV.map(&:to_i)) : exit(1)
