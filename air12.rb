@@ -24,4 +24,4 @@ def check_arguments(arguments)
     return true 
 end
 
-check_arguments(ARGV) ? draw_pyramid(ARGV[0], ARGV[1]) : exit(1)
+# check_arguments(ARGV) ? draw_pyramid(ARGV[0], ARGV[1]) : exit(1)
