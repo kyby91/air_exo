@@ -22,4 +22,6 @@ def put_arg_with_no_repeat(argument)
     puts array_sentence.join
 end
 
-check_number_of_arguments(ARGV) ? put_arg_with_no_repeat(ARGV[0]) : exit(1)
+if ARGV.size > 0
+    check_number_of_arguments(ARGV) ? put_arg_with_no_repeat(ARGV[0]) : exit(1)
+end

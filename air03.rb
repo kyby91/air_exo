@@ -26,4 +26,6 @@ def concat_array_of_strings(array_of_strings, separator)
     puts sentence
 end
 
-check_number_of_arguments(ARGV) ? give_the_array_and_the_separator(ARGV) : exit(1)
+if ARGV.size > 0
+    check_number_of_arguments(ARGV) ? give_the_array_and_the_separator(ARGV) : exit(1)
+end

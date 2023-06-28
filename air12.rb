@@ -5,7 +5,7 @@ def draw_pyramid(character, number)
     n_characters = 1
     i = number.to_i
     while i > 0
-        puts [' '].cycle(n_white_space).to_a.join('') + [character].cycle(n_characters).to_a.join('') + [' '].cycle(n_white_space).to_a.join('')
+        p [' '].cycle(n_white_space).to_a.join('') + [character].cycle(n_characters).to_a.join('') + [' '].cycle(n_white_space).to_a.join('')
         n_white_space -= 1
         n_characters += 2
         i -= 1
@@ -24,4 +24,6 @@ def check_arguments(arguments)
     return true 
 end
 
-# check_arguments(ARGV) ? draw_pyramid(ARGV[0], ARGV[1]) : exit(1)
+if $PROGRAM_NAME == __FILE__
+    check_arguments(ARGV) ? draw_pyramid(ARGV[0], ARGV[1]) : exit(1)
+end

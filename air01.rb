@@ -1,8 +1,5 @@
 #Split
 
-string = ARGV[0]
-separator = " "
-
 def puts_splited_string(string_à_couper, string_séparateur)
     i = 0
     new_word_split = ""
@@ -22,11 +19,11 @@ def puts_splited_string(string_à_couper, string_séparateur)
         end
     end
 
-    puts array
+    return array
 end
 
 def check_number_of_arguments(arguments)
-    if arguments.size != 1
+    if arguments.size != 2
         puts "Wrong number of arguments"
         return false
     end
@@ -34,4 +31,6 @@ def check_number_of_arguments(arguments)
     return true
 end
 
-check_number_of_arguments(ARGV) ? puts_splited_string(string, separator) : exit(1)
+if $PROGRAM_NAME == __FILE__
+    check_number_of_arguments(ARGV) ? (puts puts_splited_string(ARGV[0], ARGV[1])) : exit(1)
+end
