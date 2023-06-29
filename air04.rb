@@ -14,7 +14,7 @@ def puts_the_intruders(array)
     sorted_array = array.sort
     while i < array.length
         if sorted_array[i] != sorted_array[i+1]
-            puts sorted_array[i]
+            return sorted_array[i]
             i += 1
         else
             i += 2
@@ -22,4 +22,6 @@ def puts_the_intruders(array)
     end
 end
 
-check_number_of_arguments(ARGV) ? puts_the_intruders(ARGV) : exit(1)
+if $PROGRAM_NAME == __FILE__
+    check_number_of_arguments(ARGV) ? (puts puts_the_intruders(ARGV)) : exit(1)
+end    

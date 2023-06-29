@@ -19,9 +19,9 @@ def put_arg_with_no_repeat(argument)
             array_sentence.delete_at(i+1)
         end
     end
-    puts array_sentence.join
+    return array_sentence.join
 end
 
-if ARGV.size > 0
-    check_number_of_arguments(ARGV) ? put_arg_with_no_repeat(ARGV[0]) : exit(1)
+if $PROGRAM_NAME == __FILE__
+    check_number_of_arguments(ARGV) ? (puts put_arg_with_no_repeat(ARGV[0])) : exit(1)
 end

@@ -6,22 +6,23 @@ string = ARGV[0]
 def get_splited_string(string_à_couper)
     i = 0
     new_word_split = ""
-    array_word = []
+    @array_word = []
 
     while i < string_à_couper.length
         if string_à_couper[i].scan(/\s/).any?
-            array_word.push(new_word_split)
+            @array_word.push(new_word_split)
             new_word_split = ""
             i += 1
         else
             new_word_split = new_word_split + string_à_couper[i]
             if i == string_à_couper.length - 1            
-                array_word.push(new_word_split)
+                @array_word.push(new_word_split)
             end
             i += 1
         end
     end
-    puts_splited_sentence(array_word, @separator)
+  
+    return true
 end
 
 def puts_splited_sentence(sentence_to_split, sentence_separator)
@@ -42,7 +43,7 @@ def puts_splited_sentence(sentence_to_split, sentence_separator)
             i += 1
         end
     end
-    puts array_sentence
+    return array_sentence
 end
 
 def check_number_of_arguments(arguments)
@@ -54,4 +55,6 @@ def check_number_of_arguments(arguments)
     return true
 end
 
-check_number_of_arguments(ARGV) ? get_splited_string(string) : exit(1)
+if $PROGRAM_NAME == __FILE__
+    check_number_of_arguments(ARGV) ? (get_splited_string(string) ? (puts puts_splited_sentence(@array_word, @separator)) : exit): exit(1)
+end

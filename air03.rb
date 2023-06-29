@@ -10,10 +10,9 @@ def check_number_of_arguments(arguments)
 end
 
 def give_the_array_and_the_separator(array)
-    last_argument = array[array.size - 1]
+    @last_argument = array[array.size - 1]
     array.pop()
-    array_of_arguments = array
-    concat_array_of_strings(array_of_arguments, last_argument)
+    @array_of_arguments = array
 end
 
 def concat_array_of_strings(array_of_strings, separator)
@@ -23,9 +22,9 @@ def concat_array_of_strings(array_of_strings, separator)
         sentence = sentence + array_of_strings[i] + separator
         i += 1
     end
-    puts sentence
+    return sentence
 end
 
-if ARGV.size > 0
-    check_number_of_arguments(ARGV) ? give_the_array_and_the_separator(ARGV) : exit(1)
+if $PROGRAM_NAME == __FILE__
+    check_number_of_arguments(ARGV) ? (give_the_array_and_the_separator(ARGV) ? (puts concat_array_of_strings(@array_of_arguments, @last_argument)) : exit): exit(1)
 end

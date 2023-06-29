@@ -15,17 +15,21 @@ def check_arguments(arguments)
 end
 
 def put_non_infected_strings(array_of_strings, comparator)
+    result = []
     array_of_strings.each do |string|
         if !string.include?(comparator.downcase) && !string.include?(comparator.upcase)
-            puts string
+            result.push(string)
         end
     end
+    return result
 end
 
 def give_the_array_and_the_comparator(array)
-    last_argument = array[array.size - 1]
+    @last_argument = array[array.size - 1]
     array.pop()
-    put_non_infected_strings(array, last_argument)
+    @array = array
 end
 
-check_arguments(ARGV) ? give_the_array_and_the_comparator(ARGV) : exit(1)
+if $PROGRAM_NAME == __FILE__
+    check_arguments(ARGV) ? (give_the_array_and_the_comparator(ARGV) ? (puts put_non_infected_strings(@array, @last_argument)) : exit ) : exit(1)
+end
