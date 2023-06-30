@@ -166,26 +166,20 @@ def test7 ()
   end
 end
 
-# def test1 ()
-#   require_relative "air01.rb"
+def test8 ()
+  require_relative "air08.rb"
 
-#   result1 = puts_splited_string("aa bb zz", " ")
-#   expected_output1 = ["aa", "bb", "zz"]
-#   result2 = check_number_of_arguments(["aa aa"," "])
-#   expected_output2 = true
+  result1 = sorted_insert(["1","3","5"],"2")
+  expected_output1 = ["1","2","3","5"]
 
-#   if result1 == expected_output1
-#     puts "air01 (1/2) : success"
-#     @number_of_test_successful += 1
-#   else 
-#     puts "air01 (1/2) : failure"
-#   end
-#   if result2 == expected_output2
-#     puts "air02 (2/2) : success"
-#   else
-#     puts "air02 (2/2) : failure"
-#   end
-# end
+  if result1 == expected_output1
+    puts "air08 (1/1) : success"
+    @number_of_test_successful += 1
+  else 
+    puts "air08 (1/1) : failure"
+  end
+end
+
 # def test1 ()
 #   require_relative "air01.rb"
 
@@ -296,7 +290,7 @@ def execute_test()
   test5
   test6
   test7
-  # test8
+  test8
   # test9
   # test10
   # test11
