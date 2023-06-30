@@ -3,7 +3,7 @@
 def my_rotation(array)
     first_to_last = array.shift
     array.push(first_to_last)
-    puts array
+    return array
 end
 
 def check_arguments(arguments)
@@ -14,4 +14,6 @@ def check_arguments(arguments)
     return true
 end
 
-check_arguments(ARGV) ? my_rotation(ARGV) : exit(1)
+if $PROGRAM_NAME == __FILE__
+    check_arguments(ARGV) ? (puts my_rotation(ARGV)) : exit(1)
+end

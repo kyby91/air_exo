@@ -17,7 +17,7 @@ def sorted_fusion(array1, array2)
             end
         end
     end
-    puts new_array
+    return new_array
 end
 
 def check_arguments(arguments)
@@ -41,9 +41,10 @@ end
 
 def edit_arguments(values)
     i = values.index("fusion")
-    arr1 = values.slice(0..i-1)
-    arr2 = values.slice(i+1..values.size-1)
-    sorted_fusion(arr1, arr2)
+    @arr1 = values.slice(0..i-1)
+    @arr2 = values.slice(i+1..values.size-1)
 end
 
-check_arguments(ARGV.clone) ? edit_arguments(ARGV) : exit(1)    #Obliger d'utiliser un clone
+if $PROGRAM_NAME == __FILE__
+    check_arguments(ARGV.clone) ? (edit_arguments(ARGV) ? (puts sorted_fusion(@arr1, @arr2)) : exit) : exit(1)    #Obliger d'utiliser un clone
+end

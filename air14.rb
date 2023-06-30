@@ -4,35 +4,17 @@ COLOR_RED = "\e[31m"
 COLOR_GREEN = "\e[32m"
 COLOR_RESET = "\e[0m"
 
-# require_relative "air12.rb"
-
-
-# # Define constants for the arguments
-# CHARACTER = '*'
-# NUMBER = 5
-
-# # Call the child script's methods with the constants
-# if check_arguments([CHARACTER, NUMBER.to_s])
-#   draw_pyramid(CHARACTER, NUMBER)
-# else
-#   exit(1)
-# end
-
-# #Verify if the file exist
-# (1..13).each do |i|
-#   if i < 10
-#     if File.exists?("air0#{i}.rb")
-#       puts "#{COLOR_RED}air0#{i}#{COLOR_RESET}"
-#     end
-#   else
-#     if File.exists?("air#{i}.rb")
-#       puts "#{COLOR_RED}air#{i}#{COLOR_RESET}"
-#     end
-#   end
-#   sleep(0.1)
-# end
-
-
+(1..13).each do |i|
+  if i < 10
+    if !File.exists?("air0#{i}.rb")
+      exit
+    end
+  else
+    if !File.exists?("air#{i}.rb")
+      exit
+    end
+  end
+end
 
 @number_of_test_successful = 0
 
@@ -43,19 +25,10 @@ def test1 ()
   expected_output1 = ["Bonjour", "les", "gars"]
   result2 = check_number_of_arguments(["aa aa"," "])
   expected_output2 = true
-
-  if result1 == expected_output1
-    puts "air01 (1/2) : success"
-    @number_of_test_successful += 1
-  else 
-    puts "air01 (1/2) : failure"
-  end
-  if result2 == expected_output2
-    puts "air01 (2/2) : success"
-    @number_of_test_successful += 1
-  else
-    puts "air01 (2/2) : failure"
-  end
+  array = []
+  (result1 == expected_output1) ? array.push(1) : array.push(2)
+  (result2 == expected_output2) ? array.push(1) : array.push(2)
+  return array
 end
 
 def test2 ()
@@ -63,13 +36,9 @@ def test2 ()
 
   result1 = puts_splited_string("Crevette magique dans la mer des étoiles", "la")
   expected_output1 = ["aa", "bb", "zz"]
-
-  if result1 == expected_output1
-    puts "air02 (1/1) : success"
-    @number_of_test_successful += 1
-  else 
-    puts "air02 (1/1) : failure"
-  end
+  array = []  
+  (result1 == expected_output1) ? array.push(1) : array.push(2)
+  return array
 end
 
 def test3 ()
@@ -79,19 +48,9 @@ def test3 ()
   expected_output1 = ["aa bb zz "]
   result2 = check_number_of_arguments(["aa", "bb", "zz", " "])
   expected_output2 = true
-
-  if result1 == expected_output1
-    puts "air03 (1/2) : success"
-    @number_of_test_successful += 1
-  else 
-    puts "air03 (1/2) : failure"
-  end
-  if result2 == expected_output2
-    puts "air03 (2/2) : success"
-    @number_of_test_successful += 1
-  else
-    puts "air03 (2/2) : failure"
-  end
+  array = []
+  (result1 == expected_output1) ? array.push(1) : array.push(2)
+  (result2 == expected_output2) ? array.push(1) : array.push(2)
 end
 
 def test4 ()
@@ -99,13 +58,8 @@ def test4 ()
 
   result1 = puts_the_intruders(["1", "1", "2" ,"2" ,"3"])
   expected_output1 = "3"
-
-  if result1 == expected_output1
-    puts "air04 (1/1) : success"
-    @number_of_test_successful += 1
-  else 
-    puts "air04 (1/1) : failure"
-  end
+  array = []
+  (result1 == expected_output1) ? array.push(1) : array.push(2)
 end
 
 def test5 ()
@@ -113,13 +67,8 @@ def test5 ()
 
   result1 = put_arg_with_no_repeat("aa bb zz")
   expected_output1 = "a b z"
-
-  if result1 == expected_output1
-    puts "air05 (1/1) : success"
-    @number_of_test_successful += 1
-  else 
-    puts "air05 (1/1) : failure"
-  end
+  array = []
+  (result1 == expected_output1) ? array.push(1) : array.push(2)
 end
 
 def test6 ()
@@ -129,19 +78,9 @@ def test6 ()
   expected_output1 = [3, 4, 5]
   result2 = check_arguments(["1", "2" ,"3","+2"])
   expected_output2 = true
-
-  if result1 == expected_output1
-    puts "air06 (1/2) : success"
-    @number_of_test_successful += 1
-  else 
-    puts "air06 (1/2) : failure"
-  end
-  if result2 == expected_output2
-    puts "air06 (2/2) : success"
-    @number_of_test_successful += 1
-  else
-    puts "air06(2/2) : failure"
-  end
+  array = []
+  (result1 == expected_output1) ? array.push(1) : array.push(2)
+  (result2 == expected_output2) ? array.push(1) : array.push(2)
 end
 
 def test7 ()
@@ -151,19 +90,9 @@ def test7 ()
   expected_output1 = ["aa", "ff"]
   result2 = check_arguments(["aa","ee","ff","f"])
   expected_output2 = true
-
-  if result1 == expected_output1
-    puts "air07 (1/2) : success"
-    @number_of_test_successful += 1
-  else 
-    puts "air07 (1/2) : failure"
-  end
-  if result2 == expected_output2
-    puts "air07 (2/2) : success"
-    @number_of_test_successful += 1
-  else
-    puts "air07 (2/2) : failure"
-  end
+  array = []
+  (result1 == expected_output1) ? array.push(1) : array.push(2)
+  (result2 == expected_output2) ? array.push(1) : array.push(2)
 end
 
 def test8 ()
@@ -171,136 +100,70 @@ def test8 ()
 
   result1 = sorted_insert(["1","3","5"],"2")
   expected_output1 = ["1","2","3","5"]
+  array = []
+  (result1 == expected_output1) ? array.push(1) : array.push(2)
+end
 
-  if result1 == expected_output1
-    puts "air08 (1/1) : success"
-    @number_of_test_successful += 1
-  else 
-    puts "air08 (1/1) : failure"
+def test9 ()
+  require_relative "air09.rb"
+
+  result1 = sorted_fusion(["10","20","30"],["15","25","35","aa"])
+  expected_output1 = ["10","15","20","25","30",["35"]]
+  result2 = check_arguments(["10","20","30","fusion","15","25","35"])
+  expected_output2 = true
+  array = []
+  (result1 == expected_output1) ? array.push(1) : array.push(2)
+  (result2 == expected_output2) ? array.push(1) : array.push(2)
+end
+
+def test10 ()
+  require_relative "air10.rb"
+
+  result1 = my_rotation(["a","z","e","r"])
+  expected_output1 = ["z","e","r","a"]
+  array = []
+  (result1 == expected_output1) ? array.push(1) : array.push(2)
+end
+
+def test11 ()
+  require_relative "air11.rb"
+
+  result1 = read_file("test")
+  expected_output1 = "Bonjour"
+  array = []
+  (result1 == expected_output1) ? array.push(1) : array.push(2)
+end
+
+def test12 ()
+  require_relative "air12.rb"
+
+  result1 = draw_pyramid("@","2")
+  expected_output1 = [" @ ","@@@"]
+  array = []
+  (result1 == expected_output1) ? array.push(1) : array.push(2)
+end
+
+def test13 ()
+  require_relative "air13.rb"
+
+  result1 = my_quick_sort([6,5,4,3,2,1])
+  expected_output1 = [1,2,3,4,5,6]
+  array = []
+  (result1 == expected_output1) ? array.push(1) : array.push(2)
+end
+
+(1..13).each do |i|
+  if send("test#{i}")
+    returned_value = send("test#{i}")
+    if returned_value.length == 1
+      (returned_value[0] == 1) ? (puts "#{COLOR_GREEN}air#{i} (1/1) : success#{COLOR_RESET}"; @number_of_test_successful += 1) : (puts "#{COLOR_RED}air#{i} (1/1) : failure#{COLOR_RESET}") 
+    else 
+      (returned_value[0] == 1) ? (puts "#{COLOR_GREEN}air#{i} (1/2) : success#{COLOR_RESET}"; @number_of_test_successful += 1) : (puts "#{COLOR_RED}air#{i} (1/2) : failure#{COLOR_RESET}") 
+      (returned_value[1] == 1) ? (puts "#{COLOR_GREEN}air#{i} (2/2) : success#{COLOR_RESET}"; @number_of_test_successful += 1) : (puts "#{COLOR_RED}air#{i} (2/2) : failure#{COLOR_RESET}") 
+    end
   end
+  sleep(0.1)
 end
 
-# def test1 ()
-#   require_relative "air01.rb"
-
-#   result1 = puts_splited_string("aa bb zz", " ")
-#   expected_output1 = ["aa", "bb", "zz"]
-#   result2 = check_number_of_arguments(["aa aa"," "])
-#   expected_output2 = true
-
-#   if result1 == expected_output1
-#     puts "air01 (1/2) : success"
-#     @number_of_test_successful += 1
-#   else 
-#     puts "air01 (1/2) : failure"
-#   end
-#   if result2 == expected_output2
-#     puts "air02 (2/2) : success"
-#   else
-#     puts "air02 (2/2) : failure"
-#   end
-# end
-# def test1 ()
-#   require_relative "air01.rb"
-
-#   result1 = puts_splited_string("aa bb zz", " ")
-#   expected_output1 = ["aa", "bb", "zz"]
-#   result2 = check_number_of_arguments(["aa aa"," "])
-#   expected_output2 = true
-
-#   if result1 == expected_output1
-#     puts "air01 (1/2) : success"
-#     @number_of_test_successful += 1
-#   else 
-#     puts "air01 (1/2) : failure"
-#   end
-#   if result2 == expected_output2
-#     puts "air02 (2/2) : success"
-#   else
-#     puts "air02 (2/2) : failure"
-#   end
-# end
-# def test1 ()
-#   require_relative "air01.rb"
-
-#   result1 = puts_splited_string("aa bb zz", " ")
-#   expected_output1 = ["aa", "bb", "zz"]
-#   result2 = check_number_of_arguments(["aa aa"," "])
-#   expected_output2 = true
-
-#   if result1 == expected_output1
-#     puts "air01 (1/2) : success"
-#     @number_of_test_successful += 1
-#   else 
-#     puts "air01 (1/2) : failure"
-#   end
-#   if result2 == expected_output2
-#     puts "air02 (2/2) : success"
-#   else
-#     puts "air02 (2/2) : failure"
-#   end
-# end
-# def test1 ()
-#   require_relative "air01.rb"
-
-#   result1 = puts_splited_string("aa bb zz", " ")
-#   expected_output1 = ["aa", "bb", "zz"]
-#   result2 = check_number_of_arguments(["aa aa"," "])
-#   expected_output2 = true
-
-#   if result1 == expected_output1
-#     puts "air01 (1/2) : success"
-#     @number_of_test_successful += 1
-#   else 
-#     puts "air01 (1/2) : failure"
-#   end
-#   if result2 == expected_output2
-#     puts "air02 (2/2) : success"
-#   else
-#     puts "air02 (2/2) : failure"
-#   end
-# end
-# def test1 ()
-#   require_relative "air01.rb"
-
-#   result1 = puts_splited_string("aa bb zz", " ")
-#   expected_output1 = ["aa", "bb", "zz"]
-#   result2 = check_number_of_arguments(["aa aa"," "])
-#   expected_output2 = true
-
-#   if result1 == expected_output1
-#     puts "air01 (1/2) : success"
-#     @number_of_test_successful += 1
-#   else 
-#     puts "air01 (1/2) : failure"
-#   end
-#   if result2 == expected_output2
-#     puts "air02 (2/2) : success"
-#   else
-#     puts "air02 (2/2) : failure"
-#   end
-# end
-
-def execute_test()
-
-  test1
-  test2
-  test3
-  test4
-  test5
-  test6
-  test7
-  test8
-  # test9
-  # test10
-  # test11
-  # test12
-  # test13
-end
-execute_test
 puts "..."
-puts "Total success: (#{@number_of_test_successful}/XX)"
-# 1.upto(100) do |i|
-#   puts "#{i}"
-#   sleep(0.01)
-# end
+puts "Total success: (#{@number_of_test_successful}/18)"

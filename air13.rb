@@ -4,10 +4,9 @@ def my_quick_sort(array)
     if array.size > 1
         pivot = array.pop
         left, right = array.partition {|num| num < pivot}
-        p "L: #{left} P:#{pivot} R: #{right}"
         array = my_quick_sort(left) + [pivot] + my_quick_sort(right)
     end
-    p array
+    return array
 end
 
 def check_arguments(arguments)
@@ -24,4 +23,6 @@ def check_arguments(arguments)
     return true 
 end
 
-check_arguments(ARGV) ? my_quick_sort(ARGV.map(&:to_i)) : exit(1)
+if $PROGRAM_NAME == __FILE__
+    check_arguments(ARGV) ? (p my_quick_sort(ARGV.map(&:to_i))) : exit(1)
+end

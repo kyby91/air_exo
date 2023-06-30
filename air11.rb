@@ -1,8 +1,8 @@
 #afficher le contenu
 
 def read_file(name)
-    file = File.open('test')
-    puts file.read
+    file = File.open("#{name}")
+    return file.read
 end
 
 def check_argument(argument)
@@ -17,4 +17,6 @@ def check_argument(argument)
     return true
 end
 
-check_argument(ARGV) ? read_file('test') : exit(1)
+if $PROGRAM_NAME == __FILE__
+    check_argument(ARGV) ? (p read_file(ARGV[0])) : exit(1)
+end
